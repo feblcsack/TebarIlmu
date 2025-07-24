@@ -1,18 +1,13 @@
 import { HeroSection } from "../app/components/hero-section"
-import EducationSection from "./components/EducationSection"
-import Navbar from "./components/Navbar"
-import { MarqueeDemo } from "./components/Testimonial"
+import LandingPage from "./components/LandingPage"
 
 export default function HomePage() {
   return (
     <div className=" bg-white">
-        {/* <Navbar/> */}
-      <main className="min-h-screen flex items-center justify-center bg-black">
-      
+        <LandingPage/>
+      <main className="min-h-screen flex items-center justify-center bg-zinc-950">
       <HeroSection />
     </main>
-    <MarqueeDemo/>
-    {/* <EducationSection/> */}
     </div>
   )
 }

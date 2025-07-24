@@ -58,57 +58,62 @@ export default function LandingPage() {
         <div className="grid gap-8 lg:gap-12 xl:gap-16 lg:grid-cols-2 items-center min-h-[80vh]">
           
           {/* Left Content */}
-          <div className="flex flex-col justify-center space-y-6 lg:space-y-8">
-            <div className="space-y-4 lg:space-y-6">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-zinc-100 leading-tight">
-                Transform Your
-                <span className="block text-transparent bg-gradient-to-r from-zinc-300 via-white to-zinc-400 bg-clip-text">
-                  Digital Experience
-                </span>
+          <div className="flex flex-col justify-center space-y-6 lg:space-y-4">
+            <div className="space-y-4 lg:space-y-3">
+              <h1 className="text-xl sm:text-3xl md:text-2xl lg:text-2xl xl:text-4xl font-semibold tracking-tight text-zinc-100 leading-tight">
+                Education is a right, not a
+                
               </h1>
-              <p className="text-base sm:text-lg lg:text-xl text-zinc-400 max-w-2xl leading-relaxed">
-                Discover innovative solutions that drive growth and efficiency. Our cutting-edge platform empowers
-                businesses to reach new heights with seamless integration and powerful analytics.
+              <h1 className="block font-bold text-6xl text-zinc-300">
+                  Privilege
+                </h1>
+              <p className="text-base sm:text-md lg:text-md text-zinc-400 max-w-2xl leading-relaxed">
+              regardless of their background, economic status, etc deserves equal access to quality learning. Knowledge should be  inclusive.
               </p>
             </div>
 
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <button className="bg-gradient-to-r from-zinc-700 via-zinc-600 to-zinc-800 hover:from-zinc-600 hover:via-zinc-500 hover:to-zinc-700 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-xl shadow-lg transition-all duration-200 hover:shadow-xl">
-                Get Started Today
+                Join us to be mentor
               </button>
               <button className="border-2 border-zinc-600 hover:border-zinc-500 text-zinc-300 hover:text-white hover:bg-zinc-800 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-xl transition-all duration-200">
-                Learn More
+                Try it now
               </button>
             </div>
 
             {/* Stats */}
             <div className="grid grid-cols-3 gap-4 sm:gap-6 lg:gap-8 pt-6 lg:pt-8">
-              <div className="text-center sm:text-left">
-                <div className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-white">
-                  10K+
-                </div>
-                <div className="text-xs sm:text-sm text-zinc-400 mt-1">
-                  Happy Customers
-                </div>
-              </div>
-              <div className="text-center sm:text-left">
-                <div className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-white">
-                  99.9%
-                </div>
-                <div className="text-xs sm:text-sm text-zinc-400 mt-1">
-                  Uptime
-                </div>
-              </div>
-              <div className="text-center sm:text-left">
-                <div className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-white">
-                  24/7
-                </div>
-                <div className="text-xs sm:text-sm text-zinc-400 mt-1">
-                  Support
-                </div>
-              </div>
-            </div>
+
+  <div className="text-center sm:text-left">
+    <div className="text-xl sm:text-2xl lg:text-xl xl:text-4xl font-bold text-white">
+      100%
+    </div>
+    <div className="text-xs sm:text-sm text-zinc-400 mt-1">
+      Free & Accessible
+    </div>
+  </div>
+
+  <div className="text-center sm:text-left">
+    <div className="text-xl sm:text-2xl lg:text-xl xl:text-4xl font-bold text-white">
+      For Everyone
+    </div>
+    <div className="text-xs sm:text-sm text-zinc-400 mt-1">
+      No requirements, just willingness to learn
+    </div>
+  </div>
+
+  <div className="text-center sm:text-left">
+    <div className="text-xl sm:text-xl lg:text-xl xl:text-4xl font-bold text-white">
+      Online-Based
+    </div>
+    <div className="text-xs sm:text-sm text-zinc-400 mt-1">
+      Learn from anywhere, anytime
+    </div>
+  </div>
+
+</div>
+
           </div>
 
           {/* Right Carousel */}

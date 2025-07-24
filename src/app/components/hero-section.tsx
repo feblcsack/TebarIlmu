@@ -209,32 +209,33 @@ export function HeroSection() {
   
         {/* STATISTICS */}
         <div className="grid grid-cols-3 gap-8 mt-16 w-full max-w-2xl">
-          {[
-            {
-              icon: <Users className="h-6 w-6 text-zinc-200" />,
-              value: "10K+",
-              label: "Expert Tutors",
-            },
-            {
-              icon: <BookOpen className="h-6 w-6 text-zinc-200" />,
-              value: "8+",
-              label: "Subjects",
-            },
-            {
-              icon: <Award className="h-6 w-6 text-zinc-200" />,
-              value: "98%",
-              label: "Success Rate",
-            },
-          ].map((stat, i) => (
-            <div key={i} className="flex flex-col items-center space-y-2">
-              <div className="w-12 h-12 bg-zinc-800/50 rounded-full flex items-center justify-center border border-white/10 backdrop-blur-sm shadow-md">
-                {stat.icon}
-              </div>
-              <div className="text-2xl font-bold text-white">{stat.value}</div>
-              <div className="text-sm text-zinc-400">{stat.label}</div>
-            </div>
-          ))}
-        </div>
+  {[
+    {
+      icon: <Users className="h-6 w-6 text-zinc-200" />,
+      value: "100%",
+      label: "Free Access",
+    },
+    {
+      icon: <BookOpen className="h-6 w-6 text-zinc-200" />,
+      value: "Zoom-Based",
+      label: "Live Learning Sessions",
+    },
+    {
+      icon: <Award className="h-6 w-6 text-zinc-200" />,
+      value: "For All",
+      label: "No Background Needed",
+    },
+  ].map((stat, i) => (
+    <div key={i} className="flex flex-col items-center space-y-2">
+      <div className="w-12 h-12 bg-zinc-800/50 rounded-full flex items-center justify-center border border-white/10 backdrop-blur-sm shadow-md">
+        {stat.icon}
+      </div>
+      <div className="text-2xl font-bold text-white">{stat.value}</div>
+      <div className="text-sm text-zinc-400">{stat.label}</div>
+    </div>
+  ))}
+</div>
+
       </div>
     </div>
   </section>

@@ -92,7 +92,7 @@ export function HeroSection() {
   }
 
   return (
-    <section className="relative py-20 md:py-32 bg-gray-900 text-white">
+    <section className="relative py-20 md:py-32 bg-black text-white">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center text-center space-y-8">
           {/* HEADLINE */}

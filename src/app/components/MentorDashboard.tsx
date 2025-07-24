@@ -129,7 +129,7 @@ export function MentorDashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-6">
+    <div className="min-h-screen bg-black text-white p-6">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
@@ -148,120 +148,139 @@ export function MentorDashboard() {
 
         {/* Add Schedule Form */}
         {showAddForm && (
-          <div className="bg-gray-800 rounded-lg p-6 mb-8">
-            <h2 className="text-xl font-semibold mb-4">Tambah Jadwal Mengajar</h2>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium mb-2">Nama Mentor</label>
-                  <Input
-                    value={formData.mentorName}
-                    onChange={(e) => handleInputChange('mentorName', e.target.value)}
-                    placeholder="Masukkan nama Anda"
-                    className="bg-gray-700 border-gray-600 text-white"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-2">Email</label>
-                  <Input
-                    type="email"
-                    value={formData.mentorEmail}
-                    onChange={(e) => handleInputChange('mentorEmail', e.target.value)}
-                    placeholder="email@example.com"
-                    className="bg-gray-700 border-gray-600 text-white"
-                  />
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-3 gap-4">
-                <div>
-                  <label className="block text-sm font-medium mb-2">Mata Pelajaran</label>
-                  <Select value={formData.subject} onValueChange={(value) => handleInputChange('subject', value)}>
-                    <SelectTrigger className="bg-gray-700 border-gray-600 text-white">
-                      <SelectValue placeholder="Pilih mata pelajaran" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-gray-700 border-gray-600">
-                      {subjects.map((subject) => (
-                        <SelectItem key={subject} value={subject} className="text-white">
-                          {subject.charAt(0).toUpperCase() + subject.slice(1).replace('-', ' ')}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-2">Tanggal</label>
-                  <Input
-                    type="date"
-                    value={formData.date}
-                    onChange={(e) => handleInputChange('date', e.target.value)}
-                    min={getTodayDate()}
-                    className="bg-gray-700 border-gray-600 text-white"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-2">Waktu</label>
-                  <Select value={formData.timeSlot} onValueChange={(value) => handleInputChange('timeSlot', value)}>
-                    <SelectTrigger className="bg-gray-700 border-gray-600 text-white">
-                      <SelectValue placeholder="Pilih waktu" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-gray-700 border-gray-600">
-                      {timeSlots.map((slot) => (
-                        <SelectItem key={slot} value={slot} className="text-white">
-                          {slot}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium mb-2">Maksimal Siswa</label>
-                  <Input
-                    type="number"
-                    value={formData.maxStudents}
-                    onChange={(e) => handleInputChange('maxStudents', parseInt(e.target.value) || 1)}
-                    min="1"
-                    max="10"
-                    className="bg-gray-700 border-gray-600 text-white"
-                  />
-                </div>
-              </div>
-
+          <div className="bg-gradient-to-br from-zinc-900 to-neutral-900 rounded-2xl border border-zinc-700 shadow-xl p-8 mb-10">
+          <h2 className="text-2xl font-semibold text-white mb-6 tracking-tight">
+            Tambah Jadwal Mengajar
+          </h2>
+        
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-medium mb-2">Deskripsi (Opsional)</label>
-                <Textarea
-                  value={formData.description}
-                  onChange={(e) => handleInputChange('description', e.target.value)}
-                  placeholder="Jelaskan topik yang akan dibahas..."
-                  className="bg-gray-700 border-gray-600 text-white"
-                  rows={3}
+                <label className="block text-sm font-medium text-zinc-300 mb-2">
+                  Nama Mentor
+                </label>
+                <Input
+                  value={formData.mentorName}
+                  onChange={(e) => handleInputChange("mentorName", e.target.value)}
+                  placeholder="Masukkan nama Anda"
+                  className="bg-zinc-800 border-zinc-600 text-white placeholder:text-zinc-400"
+                  required
                 />
               </div>
-
-              <div className="flex gap-4">
-                <Button
-                  type="submit"
-                  disabled={isLoading}
-                  className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold"
-                >
-                  {isLoading ? "Menyimpan..." : "Simpan Jadwal"}
-                </Button>
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={() => setShowAddForm(false)}
-                  className="border-gray-600 text-gray-300 hover:bg-gray-700"
-                >
-                  Batal
-                </Button>
+              <div>
+                <label className="block text-sm font-medium text-zinc-300 mb-2">
+                  Email
+                </label>
+                <Input
+                  type="email"
+                  value={formData.mentorEmail}
+                  onChange={(e) => handleInputChange("mentorEmail", e.target.value)}
+                  placeholder="email@example.com"
+                  className="bg-zinc-800 border-zinc-600 text-white placeholder:text-zinc-400"
+                />
               </div>
-            </form>
-          </div>
+            </div>
+        
+            <div className="grid md:grid-cols-3 gap-6">
+              <div>
+                <label className="block text-sm font-medium text-zinc-300 mb-2">
+                  Mata Pelajaran
+                </label>
+                <Select value={formData.subject} onValueChange={(value) => handleInputChange("subject", value)}>
+                  <SelectTrigger className="bg-zinc-800 border-zinc-600 text-white">
+                    <SelectValue placeholder="Pilih mata pelajaran" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-zinc-800 border-zinc-600">
+                    {subjects.map((subject) => (
+                      <SelectItem key={subject} value={subject} className="text-white hover:bg-zinc-700">
+                        {subject.charAt(0).toUpperCase() + subject.slice(1).replace("-", " ")}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-zinc-300 mb-2">
+                  Tanggal
+                </label>
+                <Input
+                  type="date"
+                  value={formData.date}
+                  onChange={(e) => handleInputChange("date", e.target.value)}
+                  min={getTodayDate()}
+                  className="bg-zinc-800 border-zinc-600 text-white"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-zinc-300 mb-2">
+                  Waktu
+                </label>
+                <Select value={formData.timeSlot} onValueChange={(value) => handleInputChange("timeSlot", value)}>
+                  <SelectTrigger className="bg-zinc-800 border-zinc-600 text-white">
+                    <SelectValue placeholder="Pilih waktu" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-zinc-800 border-zinc-600">
+                    {timeSlots.map((slot) => (
+                      <SelectItem key={slot} value={slot} className="text-white hover:bg-zinc-700">
+                        {slot}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+        
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <label className="block text-sm font-medium text-zinc-300 mb-2">
+                  Maksimal Siswa
+                </label>
+                <Input
+                  type="number"
+                  value={formData.maxStudents}
+                  onChange={(e) => handleInputChange("maxStudents", parseInt(e.target.value) || 1)}
+                  min="1"
+                  max="10"
+                  className="bg-zinc-800 border-zinc-600 text-white"
+                />
+              </div>
+            </div>
+        
+            <div>
+              <label className="block text-sm font-medium text-zinc-300 mb-2">
+                Deskripsi (Opsional)
+              </label>
+              <Textarea
+                value={formData.description}
+                onChange={(e) => handleInputChange("description", e.target.value)}
+                placeholder="Jelaskan topik yang akan dibahas..."
+                className="bg-zinc-800 border-zinc-600 text-white placeholder:text-zinc-400"
+                rows={3}
+              />
+            </div>
+        
+            <div className="flex gap-4">
+              <Button
+                type="submit"
+                disabled={isLoading}
+                className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold shadow-md"
+              >
+                {isLoading ? "Menyimpan..." : "Simpan Jadwal"}
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => setShowAddForm(false)}
+                className="border-zinc-600 text-zinc-300 bg-zinc-800 hover:text-white hover:bg-zinc-700"
+              >
+                Batal
+              </Button>
+            </div>
+          </form>
+        </div>
+        
+        
         )}
 
         {/* Existing Schedules */}
@@ -279,73 +298,86 @@ export function MentorDashboard() {
               <p className="text-gray-500 text-sm mt-2">Klik "Tambah Jadwal" untuk membuat jadwal baru.</p>
             </div>
           ) : (
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {schedules.map((schedule) => (
-                <div key={schedule.id} className="bg-gray-800 rounded-lg p-6 space-y-4">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <h3 className="text-lg font-semibold text-yellow-400">
-                        {schedule.subject.charAt(0).toUpperCase() + schedule.subject.slice(1).replace('-', ' ')}
-                      </h3>
-                      <p className="text-gray-400 text-sm">{schedule.mentorName}</p>
-                    </div>
-                    <div className="flex items-center space-x-1">
-                      <Users className="h-4 w-4 text-gray-400" />
-                      <span className="text-sm text-gray-400">
-                        {schedule.currentStudents}/{schedule.maxStudents}
-                      </span>
-                    </div>
-                  </div>
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+  {schedules.map((schedule) => (
+    <div
+      key={schedule.id}
+      className="bg-gradient-to-br from-zinc-900 via-neutral-900 to-zinc-800 border border-zinc-700 rounded-2xl p-6 shadow-lg transition hover:shadow-2xl"
+    >
+      {/* Header: Subject & Mentor */}
+      <div className="flex justify-between items-start">
+        <div>
+          <h3 className="text-xl font-semibold text-yellow-400 tracking-tight">
+            {schedule.subject.charAt(0).toUpperCase() +
+              schedule.subject.slice(1).replace("-", " ")}
+          </h3>
+          <p className="text-sm text-zinc-400">{schedule.mentorName}</p>
+        </div>
+        <div className="flex items-center space-x-1">
+          <Users className="h-4 w-4 text-zinc-500" />
+          <span className="text-sm text-zinc-400">
+            {schedule.currentStudents}/{schedule.maxStudents}
+          </span>
+        </div>
+      </div>
 
-                  <div className="space-y-2">
-                    <div className="flex items-center space-x-2">
-                      <Calendar className="h-4 w-4 text-gray-400" />
-                      <span className="text-sm text-gray-300">
-                        {new Date(schedule.date).toLocaleDateString('id-ID', { 
-                          weekday: 'long', 
-                          year: 'numeric', 
-                          month: 'long', 
-                          day: 'numeric' 
-                        })}
-                      </span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Clock className="h-4 w-4 text-gray-400" />
-                      <span className="text-sm text-gray-300">{schedule.timeSlot}</span>
-                    </div>
-                  </div>
+      {/* Date & Time */}
+      <div className="space-y-2 mt-4">
+        <div className="flex items-center space-x-2">
+          <Calendar className="h-4 w-4 text-zinc-500" />
+          <span className="text-sm text-zinc-300">
+            {new Date(schedule.date).toLocaleDateString("id-ID", {
+              weekday: "long",
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </span>
+        </div>
+        <div className="flex items-center space-x-2">
+          <Clock className="h-4 w-4 text-zinc-500" />
+          <span className="text-sm text-zinc-300">{schedule.timeSlot}</span>
+        </div>
+      </div>
 
-                  {schedule.description && (
-                    <div className="mt-3">
-                      <p className="text-gray-300 text-sm">{schedule.description}</p>
-                    </div>
-                  )}
+      {/* Deskripsi */}
+      {schedule.description && (
+        <div className="mt-4">
+          <p className="text-sm text-zinc-400">{schedule.description}</p>
+        </div>
+      )}
 
-                  <div className="pt-4 border-t border-gray-700">
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="text-sm text-gray-400">Status:</span>
-                      <span className={`text-sm font-medium ${
-                        schedule.isAvailable ? 'text-green-400' : 'text-red-400'
-                      }`}>
-                        {schedule.isAvailable ? 'Tersedia' : 'Penuh'}
-                      </span>
-                    </div>
-                    
-                    <Button
-                      onClick={() => openJitsiMeeting(schedule.jitsiRoomId)}
-                      className="w-full bg-blue-600 hover:bg-blue-700 text-white"
-                      size="sm"
-                    >
-                      Buka Meeting Room
-                    </Button>
-                    
-                    <div className="mt-2 text-xs text-gray-500 text-center">
-                      Room ID: {schedule.jitsiRoomId}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+      {/* Status & Meeting */}
+      <div className="pt-5 mt-5 border-t border-zinc-700">
+        <div className="flex items-center justify-between mb-3">
+          <span className="text-sm text-zinc-400">Status:</span>
+          <span
+            className={`text-sm font-medium ${
+              schedule.isAvailable ? "text-green-400" : "text-red-400"
+            }`}
+          >
+            {schedule.isAvailable ? "Tersedia" : "Penuh"}
+          </span>
+        </div>
+
+        <Button
+  onClick={() => openJitsiMeeting(schedule.jitsiRoomId)}
+  size="sm"
+  className="w-full px-4 py-2 font-semibold text-white backdrop-blur-md bg-gradient-to-r from-zinc-700/30 via-neutral-800/30 to-zinc-900/30 hover:from-zinc-700/50 hover:to-zinc-900/50 border border-white/10 rounded-xl shadow-md transition-all duration-300"
+>
+  Buka Meeting Room
+</Button>
+
+
+
+        <div className="mt-2 text-xs text-zinc-500 text-center tracking-tight">
+          Room ID: {schedule.jitsiRoomId}
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
           )}
         </div>
       </div>

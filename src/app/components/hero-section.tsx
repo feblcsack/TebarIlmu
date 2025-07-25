@@ -95,7 +95,7 @@ export function HeroSection() {
     <section className="relative py-20 md:py-32 bg-zinc-950 text-white">
     <div className="container px-4 md:px-6">
       <div className="flex flex-col items-center text-center space-y-12">
-        {/* HEADLINE */}
+
         <div className="space-y-4 max-w-3xl">
           <h1 className="text-4xl md:text-6xl font-bold leading-tight">
             Find Your Perfect
@@ -105,11 +105,10 @@ export function HeroSection() {
             </span>
           </h1>
           <p className="text-lg md:text-xl text-zinc-400 leading-relaxed">
-            Menyambungkan dan menyamaratakan pendidikan di Indonesia tanpa dipungut biaya.
+          Empowering Education, No Cost. Just Connection.
           </p>
         </div>
   
-        {/* SELECT + BUTTON */}
         <div className="w-full max-w-md space-y-4">
           <div className="relative">
             <Select value={selectedSubject} onValueChange={setSelectedSubject}>
@@ -134,11 +133,10 @@ export function HeroSection() {
             onClick={handleFindMentor}
             disabled={isLoading || !selectedSubject}
           >
-            {isLoading ? "Mencari Mentor..." : "Find a Mentor"}
+            {isLoading ? "Searching Mentor..." : "Find a Mentor"}
           </Button>
         </div>
   
-        {/* AVAILABLE TUTORS SECTION */}
         {showTutors && (
           <div className="w-full max-w-4xl mt-12">
             <h2 className="text-2xl font-bold mb-6 text-zinc-100">
@@ -148,7 +146,7 @@ export function HeroSection() {
             {availableTutors.length === 0 ? (
               <div className="bg-zinc-800/40 border border-zinc-700 rounded-xl p-6 text-center backdrop-blur-md">
                 <p className="text-zinc-400">
-                  Tidak ada mentor yang tersedia saat ini untuk mata pelajaran ini.
+                  No mentor is available for this subject right now.
                 </p>
               </div>
             ) : (
@@ -217,7 +215,7 @@ export function HeroSection() {
     },
     {
       icon: <BookOpen className="h-6 w-6 text-zinc-200" />,
-      value: "Zoom-Based",
+      value: "Jitsi-Based",
       label: "Live Learning Sessions",
     },
     {

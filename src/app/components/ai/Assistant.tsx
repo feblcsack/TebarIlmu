@@ -33,11 +33,16 @@ export function AILearningAssistant({
   const [genAI, setGenAI] = useState<GoogleGenerativeAI | null>(null)
   const scrollAreaRef = useRef<HTMLDivElement>(null)
   const messagesEndRef = useRef<HTMLDivElement>(null)
+  const [hasUserInteracted, setHasUserInteracted] = useState(false)
+
 
   // Auto scroll to bottom when new messages arrive
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }, [messages, isLoading])
+    if (hasUserInteracted) {
+      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+    }
+  }, [messages, isLoading, hasUserInteracted])
+  
 
   useEffect(() => {
     // Initialize Gemini AI
@@ -58,6 +63,7 @@ export function AILearningAssistant({
 
   const sendMessage = async () => {
     if (!input.trim() || !genAI) return
+    setHasUserInteracted(true)
 
     const userMessage: Message = {
       id: Date.now().toString(),

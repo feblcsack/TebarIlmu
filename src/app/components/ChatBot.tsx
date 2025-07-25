@@ -4,7 +4,7 @@ import { AILearningAssistant } from "./ai/Assistant";
 
 export default function ChatBotPage() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 p-8">
+    <div className="min-h-screen flex items-center justify-center bg-white p-8">
       <div className="flex flex-col md:flex-row w-full max-w-6xl gap-8">
      
         <div className="md:w-1/2 flex flex-col justify-center">

@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../components/ui/accordion"
 import Link from "next/link"
 
@@ -36,13 +37,10 @@ const faqData = [
 
 export default function FAQPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#a6f898] to-white flex flex-col">
-      {/* Main Content */}
-      <main className="flex-1">
-        {/* FAQ Section */}
+    <div className="min-h-screen flex flex-col">
+      <main className="flex-1 bg-gradient-to-t from-[#a6f898] to-white">
         <section className="py-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
-            {/* Header */}
             <div className="text-center mb-12">
               <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h1>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -70,12 +68,12 @@ export default function FAQPage() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white">
+      <footer className="bg-[#232323] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {/* Company Info */}
             <div className="md:col-span-2">
-              <h3 className="text-lg font-semibold mb-4">Tebar Ilmu</h3>
+              <Image src="/logo/transparent.png" alt="Logo" width={100} height={100} className="mb-4" />
               <p className="text-gray-400 mb-4 max-w-md">
                 Providing quality products and exceptional customer service since 2020. Your satisfaction is our top
                 priority.
@@ -87,50 +85,40 @@ export default function FAQPage() {
               <h4 className="text-sm font-semibold uppercase tracking-wider mb-4">Quick Links</h4>
               <ul className="space-y-2">
                 <li>
-                  <Link href="/about" className="text-gray-400 hover:text-white transition-colors">
+                  <Link href="#about" className="text-gray-400 hover:text-white transition-colors">
                     About Us
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact" className="text-gray-400 hover:text-white transition-colors">
-                    Contact
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/faq" className="text-gray-400 hover:text-white transition-colors">
+                  <Link href="#faq" className="text-gray-400 hover:text-white transition-colors">
                     FAQ
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/support" className="text-gray-400 hover:text-white transition-colors">
-                    Support
                   </Link>
                 </li>
               </ul>
             </div>
 
-            {/* Legal */}
+
             <div>
-              <h4 className="text-sm font-semibold uppercase tracking-wider mb-4">Legal</h4>
+              <h4 className="text-sm font-semibold uppercase tracking-wider mb-4">Credits</h4>
               <ul className="space-y-2">
                 <li>
                   <Link href="/privacy" className="text-gray-400 hover:text-white transition-colors">
-                    Privacy Policy
+                    Freepik
                   </Link>
                 </li>
                 <li>
                   <Link href="/terms" className="text-gray-400 hover:text-white transition-colors">
-                    Terms of Service
+                    Gemini
                   </Link>
                 </li>
                 <li>
                   <Link href="/returns" className="text-gray-400 hover:text-white transition-colors">
-                    Returns
+                    Next.js
                   </Link>
                 </li>
                 <li>
                   <Link href="/shipping" className="text-gray-400 hover:text-white transition-colors">
-                    Shipping Info
+                    Firebase
                   </Link>
                 </li>
               </ul>

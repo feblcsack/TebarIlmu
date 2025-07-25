@@ -43,13 +43,13 @@ export function Navbar() {
 
   const navLinks = [
     { href: "/#find-mentor", label: "Cari Mentor" },
-    { href: "/about", label: "Tentang Kami" },
+    { href: "/about", label: "About Us" },
   ];
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-14 max-w-screen-2xl items-center">
+      <header className="sticky top-0 z-50 w-full bg-gradient-to-t from-white to-[#a6f898]">
+        <div className="container flex h-20 max-w-screen-2xl items-center">
           
           <div className="mr-4 flex">
             <Link href="/" className="mr-6 flex items-center space-x-2">

@@ -2,7 +2,7 @@ import { Button } from "../components/ui/button"
 
 export default function EducationLanding() {
   return (
-    <div className="min-h-screen bg-gradient-to-t from-[#a6f898] to-white
+    <div className="min-h-screen 
  flex items-center justify-center px-4">
       <div className="text-center max-w-md mx-auto space-y-8">
         {/* Header text */}

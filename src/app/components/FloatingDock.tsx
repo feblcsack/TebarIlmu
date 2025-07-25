@@ -109,17 +109,17 @@ export function FloatingDockDemo() {
       href: "/#hero",
     },
     {
-      title: "Tentang Kami",
+      title: "About Us",
       icon: (
         <IconInfoCircle className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "/about",
+      href: "#about",
     },
     {
         title: "Tebar Ilmu",
         icon: (
           <img
-            src="/logo/logo.png"
+            src="/logo/transparent.png"
             width={20}
             height={20}
             alt="Tebar Ilmu"
@@ -154,7 +154,6 @@ export function FloatingDockDemo() {
     },
   ];
 
-  // Links untuk user yang sudah login
   const userLinks = [
     {
       title: "Dashboard",

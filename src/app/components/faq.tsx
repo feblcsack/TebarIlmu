@@ -75,8 +75,7 @@ export default function FAQPage() {
             <div className="md:col-span-2">
               <Image src="/logo/transparent.png" alt="Logo" width={100} height={100} className="mb-4" />
               <p className="text-gray-400 mb-4 max-w-md">
-                Providing quality products and exceptional customer service since 2020. Your satisfaction is our top
-                priority.
+              Knowledge is a Right, Not a Privilege..
               </p>
             </div>
 
@@ -128,17 +127,6 @@ export default function FAQPage() {
           {/* Bottom Bar */}
           <div className="mt-8 pt-8 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm">© {new Date().getFullYear()} Team CAW. All rights reserved.</p>
-            <div className="mt-4 sm:mt-0 flex space-x-6">
-              <Link href="/about" className="text-gray-400 hover:text-white text-sm transition-colors">
-                About Us
-              </Link>
-              <Link href="/contact" className="text-gray-400 hover:text-white text-sm transition-colors">
-                Contact
-              </Link>
-              <Link href="/privacy" className="text-gray-400 hover:text-white text-sm transition-colors">
-                Privacy
-              </Link>
-            </div>
           </div>
         </div>
       </footer>

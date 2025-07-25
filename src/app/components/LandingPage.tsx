@@ -80,10 +80,12 @@ export default function LandingPage() {
 
 
             </a>
-            
+            <a href="#hero">
             <button className="border-2 border-gray-300 hover:border-green-500 text-gray-700 hover:text-green-800 hover:bg-blue-50 px-6 py-2 text-sm font-medium rounded-lg transition-all duration-200">
               Try it now
             </button>
+            </a>
+           
           </div>
   
           {/* Stats */}

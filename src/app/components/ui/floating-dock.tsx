@@ -1,11 +1,5 @@
 'use client'
 
-/**
- * Note: Use position fixed according to your needs
- * Desktop navbar is better positioned at the bottom
- * Mobile navbar is better positioned at bottom right.
- **/
-
 import { cn } from "@/lib/utils";
 import { IconLayoutNavbarCollapse } from "@tabler/icons-react";
 import {
@@ -104,7 +98,7 @@ const FloatingDockDesktop = ({
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
       className={cn(
-        "mx-auto hidden h-16 items-end gap-4 rounded-2xl bg-gray-50 px-4 pb-3 md:flex dark:bg-neutral-900",
+        "mx-auto hidden h-16 items-end gap-4 rounded-2xl bg-gray-50 px-4 pb-3 md:flex dark:bg-neutral-900 shadow-2xl",
         className,
       )}
     >

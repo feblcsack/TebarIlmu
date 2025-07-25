@@ -22,14 +22,14 @@ export function HeroSection() {
   const [showTutors, setShowTutors] = useState(false)
 
   const subjects = [
-    { value: "matematika", label: "Matematika" },
-    { value: "fisika", label: "Fisika" },
-    { value: "biologi", label: "Biologi" },
-    { value: "sejarah", label: "Sejarah" },
-    { value: "bahasa-inggris", label: "Bahasa Inggris" },
-    { value: "kimia", label: "Kimia" },
-    { value: "ekonomi", label: "Ekonomi" },
-    { value: "geografi", label: "Geografi" }
+    { value: "math", label: "Math" },
+    { value: "physics", label: "Physics" },
+    { value: "biology", label: "Biology" },
+    { value: "history", label: "History" },
+    { value: "english", label: "English" },
+    { value: "chemistry", label: "Chemistry" },
+    { value: "economy", label: "Economy" },
+    { value: "geography", label: "Geography" }
   ]
 
   const handleFindMentor = async () => {
@@ -142,7 +142,7 @@ export function HeroSection() {
         {showTutors && (
           <div className="w-full max-w-4xl mt-12">
             <h2 className="text-2xl font-bold mb-6 text-zinc-100">
-              Mentor Tersedia untuk {subjects.find((s) => s.value === selectedSubject)?.label}
+              Mentor available for {subjects.find((s) => s.value === selectedSubject)?.label}
             </h2>
   
             {availableTutors.length === 0 ? (
@@ -165,18 +165,18 @@ export function HeroSection() {
                       </div>
                       <div className="text-right">
                         <p className="text-sm text-zinc-500">
-                          {tutor.currentStudents}/{tutor.maxStudents} siswa
+                          {tutor.currentStudents}/{tutor.maxStudents} students
                         </p>
                       </div>
                     </div>
   
                     <div className="space-y-2">
                       <div className="flex items-center justify-between text-sm">
-                        <span className="text-zinc-500">Tanggal:</span>
+                        <span className="text-zinc-500">Date:</span>
                         <span className="text-zinc-300">{formatDate(tutor.date)}</span>
                       </div>
                       <div className="flex items-center justify-between text-sm">
-                        <span className="text-zinc-500">Waktu:</span>
+                        <span className="text-zinc-500">Time:</span>
                         <span className="text-zinc-300">{tutor.timeSlot}</span>
                       </div>
                       {tutor.description && (

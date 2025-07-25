@@ -1,6 +1,5 @@
-// AI Learning Assistant Component
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { GoogleGenerativeAI } from '@google/generative-ai'
 import { Card, CardContent, CardHeader, CardTitle } from '@/app/components/ui/card'
 import { Button } from '@/app/components/ui/button'
@@ -32,6 +31,13 @@ export function AILearningAssistant({
   const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [genAI, setGenAI] = useState<GoogleGenerativeAI | null>(null)
+  const scrollAreaRef = useRef<HTMLDivElement>(null)
+  const messagesEndRef = useRef<HTMLDivElement>(null)
+
+  // Auto scroll to bottom when new messages arrive
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [messages, isLoading])
 
   useEffect(() => {
     // Initialize Gemini AI
@@ -65,9 +71,8 @@ export function AILearningAssistant({
     setIsLoading(true)
 
     try {
-      const model = genAI.getGenerativeModel({ model: "gemini-pro" })
+      const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" })
       
-      // Create context-aware prompt
       const contextPrompt = `
         Anda adalah AI Learning Assistant untuk platform pembelajaran gratis.
         
@@ -137,7 +142,7 @@ export function AILearningAssistant({
 
   return (
     <Card className="h-[500px] flex flex-col">
-      <CardHeader className="pb-3">
+      <CardHeader className="pb-3 flex-shrink-0">
         <CardTitle className="flex items-center gap-2 text-lg">
           <Bot className="h-5 w-5 text-primary" />
           AI Learning Assistant
@@ -147,59 +152,64 @@ export function AILearningAssistant({
         </CardTitle>
       </CardHeader>
       
-      <CardContent className="flex-1 flex flex-col gap-3">
-        {/* Messages */}
-        <ScrollArea className="flex-1 pr-4">
-          <div className="space-y-3">
-            {messages.map((message) => (
-              <div
-                key={message.id}
-                className={`flex gap-3 ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
-              >
-                <div className={`flex gap-2 max-w-[80%] ${message.type === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
-                    message.type === 'user' 
-                      ? 'bg-primary text-primary-foreground' 
-                      : 'bg-muted text-muted-foreground'
-                  }`}>
-                    {message.type === 'user' ? <User className="h-4 w-4" /> : <Bot className="h-4 w-4" />}
-                  </div>
-                  
-                  <div className={`rounded-lg p-3 ${
-                    message.type === 'user' 
-                      ? 'bg-primary text-primary-foreground' 
-                      : 'bg-muted'
-                  }`}>
-                    <p className="text-sm whitespace-pre-wrap">{message.content}</p>
-                    {message.category && (
-                      <Badge variant="outline" className="mt-2 text-xs">
-                        {message.category}
-                      </Badge>
-                    )}
-                  </div>
-                </div>
-              </div>
-            ))}
-            
-            {isLoading && (
-              <div className="flex gap-3 justify-start">
-                <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center">
-                  <Bot className="h-4 w-4 animate-pulse" />
-                </div>
-                <div className="bg-muted rounded-lg p-3">
-                  <div className="flex gap-1">
-                    <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce"></div>
-                    <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                    <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+      <CardContent className="flex-1 flex flex-col gap-3 min-h-0">
+        {/* Messages Container - Fixed height and overflow */}
+        <div className="flex-1 min-h-0 relative">
+          <ScrollArea ref={scrollAreaRef} className="h-full w-full">
+            <div className="space-y-3 p-1">
+              {messages.map((message) => (
+                <div
+                  key={message.id}
+                  className={`flex gap-3 ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
+                >
+                  <div className={`flex gap-2 max-w-[85%] ${message.type === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
+                      message.type === 'user' 
+                        ? 'bg-primary text-primary-foreground' 
+                        : 'bg-muted text-muted-foreground'
+                    }`}>
+                      {message.type === 'user' ? <User className="h-4 w-4" /> : <Bot className="h-4 w-4" />}
+                    </div>
+                    
+                    <div className={`rounded-lg p-3 break-words overflow-wrap-anywhere ${
+                      message.type === 'user' 
+                        ? 'bg-primary text-primary-foreground' 
+                        : 'bg-muted'
+                    }`}>
+                      <p className="text-sm whitespace-pre-wrap break-words">{message.content}</p>
+                      {message.category && (
+                        <Badge variant="outline" className="mt-2 text-xs">
+                          {message.category}
+                        </Badge>
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
-            )}
-          </div>
-        </ScrollArea>
+              ))}
+              
+              {isLoading && (
+                <div className="flex gap-3 justify-start">
+                  <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center flex-shrink-0">
+                    <Bot className="h-4 w-4 animate-pulse" />
+                  </div>
+                  <div className="bg-muted rounded-lg p-3">
+                    <div className="flex gap-1">
+                      <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce"></div>
+                      <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                      <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                    </div>
+                  </div>
+                </div>
+              )}
+              
+              {/* Invisible div for auto-scroll */}
+              <div ref={messagesEndRef} />
+            </div>
+          </ScrollArea>
+        </div>
 
-        {/* Quick Actions */}
-        <div className="grid grid-cols-2 gap-2">
+        {/* Quick Actions - Fixed position */}
+        <div className="grid grid-cols-2 gap-2 flex-shrink-0">
           {quickActions.map((action, index) => (
             <Button
               key={index}
@@ -215,8 +225,8 @@ export function AILearningAssistant({
           ))}
         </div>
 
-        {/* Input */}
-        <div className="flex gap-2">
+        {/* Input - Fixed position */}
+        <div className="flex gap-2 flex-shrink-0">
           <Input
             value={input}
             onChange={(e) => setInput(e.target.value)}

@@ -166,12 +166,11 @@ export function FloatingDockDemo() {
     {
       title: "Profile",
       icon: <UserProfile />,
-      href: "#", // href tidak digunakan karena menggunakan dropdown
-      isUserProfile: true, // flag untuk membedakan item profile
+      href: "#", 
+      isUserProfile: true,  
     },
   ];
 
-  // Gabungkan links berdasarkan status login
   const links = user 
     ? [...baseLinks, ...userLinks]
     : [...baseLinks, ...authLinks];

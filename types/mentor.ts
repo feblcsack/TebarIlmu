@@ -12,6 +12,7 @@ export interface MentorSchedule {
     jitsiRoomId: string;
     description?: string;
     createdAt: Date;
+    updatedAt?: string;
   }
   
   export interface BookingSession {

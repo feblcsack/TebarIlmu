@@ -10,35 +10,28 @@ import {
     getDoc,
     orderBy,
     Timestamp,
-    QueryConstraint // Tipe untuk menampung semua jenis constraint
+    QueryConstraint 
   } from 'firebase/firestore';
-  import { db } from '../lib/firebase'; // Pastikan path ini benar
+  import { db } from '../lib/firebase';
   import { MentorSchedule, BookingSession } from '../types/mentor';
   
   export class MentorService {
-    /**
-     * Mengambil jadwal mentor yang tersedia berdasarkan mata pelajaran dan tanggal (opsional).
-     * Jadwal yang diambil adalah yang akan datang dan slotnya masih tersedia.
-     */
+  
     static async getAvailableTutors(subject: string, date?: string): Promise<MentorSchedule[]> {
       try {
-        // Kumpulan kondisi untuk query, dibangun secara dinamis
+       
         const constraints: QueryConstraint[] = [
           where('subject', '==', subject),
           where('isAvailable', '==', true),
         ];
   
-        // PERBAIKAN: Logika yang lebih aman untuk menambahkan filter tanggal
         if (date) {
-          // Jika tanggal spesifik diberikan, cari tanggal yang sama persis
           constraints.push(where('date', '==', date));
         } else {
-          // Jika tidak ada tanggal, cari jadwal mulai hari ini dan seterusnya
           const today = new Date().toISOString().split('T')[0];
           constraints.push(where('date', '>=', today));
         }
         
-        // Tambahkan pengurutan
         constraints.push(orderBy('date'), orderBy('timeSlot'));
   
         const q = query(collection(db, 'mentorSchedules'), ...constraints);
@@ -214,5 +207,19 @@ import {
         throw error;
       }
     }
+
+  static async cancelBooking(bookingId: string): Promise<void> {
+    try {
+      const bookingRef = doc(db, 'bookingSessions', bookingId);
+      await updateDoc(bookingRef, {
+        status: 'cancelled'
+      });
+      console.log(`Booking ${bookingId} has been cancelled.`);
+    } catch (error) {
+      console.error('Error cancelling booking:', error);
+      throw error;
+    }
+  }
+
   }
   

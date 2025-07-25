@@ -84,7 +84,7 @@ export default function EducationSection() {
                 <p className="text-[#616161] text-lg">advancing the fourth point of SDGs</p>
               </div>
               <p className="text-[#616161] text-lg">
-                We're building a platform where education truly belongs to{" "}
+                We&apos;re building a platform where education truly belongs to{" "}
                 <span className="text-[#ccffd0] font-semibold">everyone.</span>
               </p>
             </div>

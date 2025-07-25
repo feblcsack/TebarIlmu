@@ -295,7 +295,7 @@ export function MentorDashboard() {
             <div className="bg-gray-800 rounded-lg p-8 text-center">
               <Calendar className="h-12 w-12 text-gray-600 mx-auto mb-4" />
               <p className="text-gray-400">Belum ada jadwal mengajar.</p>
-              <p className="text-gray-500 text-sm mt-2">Klik "Tambah Jadwal" untuk membuat jadwal baru.</p>
+              <p className="text-gray-500 text-sm mt-2">Klik &quot;Tambah Jadwal&quot; untuk membuat jadwal baru.</p>
             </div>
           ) : (
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

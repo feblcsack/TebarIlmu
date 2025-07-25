@@ -263,7 +263,7 @@ export function StudentDashboard() {
                       <div className="grid md:grid-cols-3 gap-4 text-sm text-gray-700">
                         <div className="flex items-center space-x-2">
                           <User className="h-4 w-4 text-gray-400" />
-                          <span>Mentor: {booking.mentorName || booking.mentorId}</span>
+                          <span>Mentor: {booking.mentorId}</span>
                         </div>
                         <div className="flex items-center space-x-2">
                           <Calendar className="h-4 w-4 text-gray-400" />

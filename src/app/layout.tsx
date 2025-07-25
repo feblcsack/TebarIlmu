@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { AuthProvider } from './context/AuthContext'; 
 import "./globals.css";
+import { FloatingDockDemo } from "./components/FloatingDock";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +31,9 @@ export default function RootLayout({
       >
         <AuthProvider> {/* Bungkus aplikasi dengan AuthProvider */}
           {children}
+          <div className="fixed bottom-4 left-0 right-0 flex justify-end md:justify-center z-10">
+          <FloatingDockDemo/>
+          </div>
         </AuthProvider>
       </body>
     </html>

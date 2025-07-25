@@ -5,19 +5,19 @@ import { ChevronLeft, ChevronRight, Play, Pause } from "lucide-react"
 
 const carouselImages = [
   {
-    src: "/api/placeholder/800/600",
+    src: "/carousel/1.JPG",
     alt: "Modern workspace",
   },
   {
-    src: "/api/placeholder/800/600", 
+    src: "/carousel/2.JPG", 
     alt: "Team collaboration",
   },
   {
-    src: "/api/placeholder/800/600",
+    src: "/carousel/3.JPG",
     alt: "Technology dashboard",
   },
   {
-    src: "/api/placeholder/800/600",
+    src: "/carousel/4.JPG",
     alt: "Design studio",
   },
 ]

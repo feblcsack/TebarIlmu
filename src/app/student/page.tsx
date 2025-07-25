@@ -28,7 +28,7 @@ export default function StudentPage() {
       }
 
       const role = docSnap.data().role
-      if (role === 'student') {
+      if (role === 'siswa') {
         setAuthorized(true)
       } else {
         router.replace('/403')

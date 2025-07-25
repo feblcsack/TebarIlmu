@@ -121,7 +121,7 @@ export function HeroSection() {
       <div className="space-y-4 max-w-3xl">
         <h1 className="text-4xl md:text-6xl font-bold leading-tight">
           Find Your Perfect
-          <span className="bg-gradient-to-r from-black via-gray-800 to-gray-900 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-green-700 via-green-500 to-green-400 bg-clip-text text-transparent">
             {" "}
             Tutor
           </span>

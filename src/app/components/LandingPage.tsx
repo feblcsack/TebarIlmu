@@ -2,14 +2,15 @@
 
 import { useState, useEffect } from "react"
 import { ChevronLeft, ChevronRight, Play, Pause } from "lucide-react"
+import Link from "next/link"
 
 const carouselImages = [
   {
-    src: "/carousel/1.JPG",
+    src: "/edu/1.jpeg",
     alt: "Modern workspace",
   },
   {
-    src: "/carousel/2.JPG", 
+    src: "/edu/2.jpeg", 
     alt: "Team collaboration",
   },
   {
@@ -74,10 +75,14 @@ export default function LandingPage() {
 
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-              <button className="bg-gradient-to-r from-zinc-700 via-zinc-600 to-zinc-800 hover:from-zinc-600 hover:via-zinc-500 hover:to-zinc-700 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-xl shadow-lg transition-all duration-200 hover:shadow-xl">
-                Join us to be mentor
-              </button>
-              <button className="border-2 border-zinc-600 hover:border-zinc-500 text-zinc-300 hover:text-white hover:bg-zinc-800 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-xl transition-all duration-200">
+            <a href="/register">
+  <button className="bg-zinc-800 hover:bg-zinc-700 text-white px-4 py-2 text-sm font-medium rounded-lg transition duration-150">
+    Join as Mentor
+  </button>
+</a>
+
+              
+              <button className="border-2 border-zinc-600 hover:border-zinc-500 text-zinc-300 hover:text-white hover:bg-zinc-800 px-4 py-2 text-base sm:text-sm font-semibold rounded-xl transition-all duration-200">
                 Try it now
               </button>
             </div>

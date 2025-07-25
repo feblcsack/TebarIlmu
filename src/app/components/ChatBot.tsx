@@ -6,8 +6,7 @@ export default function ChatBotPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 p-8">
       <div className="flex flex-col md:flex-row w-full max-w-6xl gap-8">
-        
-        {/* Kiri: Teks Deskripsi */}
+     
         <div className="md:w-1/2 flex flex-col justify-center">
           <h1 className="text-4xl font-bold text-gray-800 mb-4">
             Use our ChatBot AI Assistant
@@ -17,9 +16,8 @@ export default function ChatBotPage() {
           </p>
         </div>
 
-        {/* Kanan: Komponen ChatBot */}
         <div className="md:w-1/2 bg-white shadow-md rounded-lg p-4 border border-gray-200">
-          <AILearningAssistant sessionTopic="Matematika Dasar" userLevel="beginner" />
+          <AILearningAssistant sessionTopic="Basic Math" userLevel="beginner" />
         </div>
       </div>
     </div>

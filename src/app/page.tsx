@@ -3,6 +3,7 @@ import { AILearningAssistant } from "./components/ai/Assistant"
 import ChatBot from "./components/ChatBot"
 import FAQPage from "./components/faq"
 import LandingPage from "./components/LandingPage"
+import EducationLanding from "./components/Part"
 
 export default function HomePage() {
   return (
@@ -14,6 +15,7 @@ export default function HomePage() {
        
        </main>
        <ChatBot/>
+       <EducationLanding/>
        <FAQPage/>
     </div>
   )

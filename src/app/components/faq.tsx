@@ -36,7 +36,7 @@ const faqData = [
 
 export default function FAQPage() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen bg-gradient-to-b from-[#a6f898] to-white flex flex-col">
       {/* Main Content */}
       <main className="flex-1">
         {/* FAQ Section */}
@@ -65,20 +65,6 @@ export default function FAQPage() {
                 </AccordionItem>
               ))}
             </Accordion>
-
-            {/* Contact CTA */}
-            <div className="mt-12 text-center p-8 bg-gray-50 rounded-lg">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Still have questions?</h3>
-              <p className="text-gray-600 mb-4">
-                {"Can't find the answer you're looking for? Our support team is here to help."}
-              </p>
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-900 hover:bg-gray-800 transition-colors"
-              >
-                Contact Support
-              </Link>
-            </div>
           </div>
         </section>
       </main>
@@ -89,7 +75,7 @@ export default function FAQPage() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {/* Company Info */}
             <div className="md:col-span-2">
-              <h3 className="text-lg font-semibold mb-4">Company Name</h3>
+              <h3 className="text-lg font-semibold mb-4">Tebar Ilmu</h3>
               <p className="text-gray-400 mb-4 max-w-md">
                 Providing quality products and exceptional customer service since 2020. Your satisfaction is our top
                 priority.
@@ -153,7 +139,7 @@ export default function FAQPage() {
 
           {/* Bottom Bar */}
           <div className="mt-8 pt-8 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm">© {new Date().getFullYear()} Company Name. All rights reserved.</p>
+            <p className="text-gray-400 text-sm">© {new Date().getFullYear()} Team CAW. All rights reserved.</p>
             <div className="mt-4 sm:mt-0 flex space-x-6">
               <Link href="/about" className="text-gray-400 hover:text-white text-sm transition-colors">
                 About Us

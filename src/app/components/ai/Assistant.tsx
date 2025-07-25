@@ -51,14 +51,14 @@ export function AILearningAssistant({
       setGenAI(new GoogleGenerativeAI(apiKey))
     }
 
-    // Welcome message
     setMessages([{
       id: '1',
       type: 'ai',
-      content: `Halo! Saya AI Assistant untuk sesi "${sessionTopic}". Saya siap membantu Anda memahami materi, memberikan penjelasan tambahan, atau menjawab pertanyaan. Bagaimana saya bisa membantu?`,
+      content: `Hello! I'm your AI Assistant for the session "${sessionTopic}". I'm here to help you understand the material, give additional explanations, or answer your questions. How can I assist you today?`,
       timestamp: new Date(),
       category: 'explanation'
     }])
+    
   }, [sessionTopic])
 
   const sendMessage = async () => {
@@ -80,23 +80,24 @@ export function AILearningAssistant({
       const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" })
       
       const contextPrompt = `
-        Anda adalah AI Learning Assistant untuk platform pembelajaran gratis.
-        
-        Konteks Sesi:
-        - Topik: ${sessionTopic}
-        - Level Siswa: ${userLevel}
-        ${currentMaterial ? `- Materi Saat Ini: ${currentMaterial}` : ''}
-        
-        Instruksi:
-        1. Berikan jawaban yang sesuai dengan level siswa (${userLevel})
-        2. Fokus pada topik "${sessionTopic}"
-        3. Gunakan bahasa Indonesia yang mudah dipahami
-        4. Berikan contoh praktis jika memungkinkan
-        5. Jika diminta translate, berikan terjemahan yang akurat
-        6. Jika diminta quiz, buat pertanyaan yang relevan dengan materi
-        
-        Pertanyaan Siswa: ${input}
-      `
+  You are an AI Learning Assistant for a free educational platform.
+
+  Session Context:
+  - Topic: ${sessionTopic}
+  - Student Level: ${userLevel}
+  ${currentMaterial ? `- Current Material: ${currentMaterial}` : ''}
+
+  Instructions:
+  1. Respond at the appropriate level (${userLevel}) for the student.
+  2. Focus on the topic: "${sessionTopic}".
+  3. Use clear and simple English.
+  4. Provide practical examples when possible.
+  5. If the student asks to translate, provide accurate translation.
+  6. If asked for a quiz, generate relevant questions based on the topic.
+
+  Student's Question: ${input}
+`
+
 
       const result = await model.generateContent(contextPrompt)
       const response = await result.response
@@ -136,11 +137,12 @@ export function AILearningAssistant({
   }
 
   const quickActions = [
-    { label: 'Jelaskan konsep dasar', icon: BookOpen, prompt: 'Jelaskan konsep dasar dari materi ini dengan bahasa yang mudah dipahami' },
-    { label: 'Buat quiz', icon: Lightbulb, prompt: 'Buatkan 3 soal quiz untuk menguji pemahaman materi ini' },
-    { label: 'Translate ke English', icon: Languages, prompt: 'Translate penjelasan terakhir ke bahasa Inggris' },
-    { label: 'Berikan contoh praktis', icon: BookOpen, prompt: 'Berikan contoh praktis dari konsep yang sedang dipelajari' }
+    { label: 'Explain the basics', icon: BookOpen, prompt: 'Explain the basic concept of this material in a simple way' },
+    { label: 'Create a quiz', icon: Lightbulb, prompt: 'Create 3 quiz questions to test understanding of this topic' },
+    { label: 'Translate to Bahasa Indonesia', icon: Languages, prompt: 'Translate the last explanation to Indonesian' },
+    { label: 'Give a practical example', icon: BookOpen, prompt: 'Give a practical example of the concept being studied' }
   ]
+  
 
   const handleQuickAction = (prompt: string) => {
     setInput(prompt)
@@ -208,35 +210,33 @@ export function AILearningAssistant({
                 </div>
               )}
               
-              {/* Invisible div for auto-scroll */}
               <div ref={messagesEndRef} />
             </div>
           </ScrollArea>
         </div>
 
-        {/* Quick Actions - Fixed position */}
-        <div className="grid grid-cols-2 gap-2 flex-shrink-0">
-          {quickActions.map((action, index) => (
-            <Button
-              key={index}
-              variant="outline"
-              size="sm"
-              className="text-xs h-8 justify-start"
-              onClick={() => handleQuickAction(action.prompt)}
-              disabled={isLoading}
-            >
-              <action.icon className="h-3 w-3 mr-1" />
-              {action.label}
-            </Button>
-          ))}
-        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 flex-shrink-0 w-full">
+  {quickActions.map((action, index) => (
+    <Button
+      key={index}
+      variant="outline"
+      size="sm"
+      className="text-xs h-8 justify-start whitespace-normal break-words w-full"
+      onClick={() => handleQuickAction(action.prompt)}
+      disabled={isLoading}
+    >
+      <action.icon className="h-3 w-3 mr-1 flex-shrink-0" />
+      <span className="truncate">{action.label}</span>
+    </Button>
+  ))}
+</div>
 
-        {/* Input - Fixed position */}
+
         <div className="flex gap-2 flex-shrink-0">
           <Input
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Tanya apa saja tentang materi..."
+            placeholder="Ask me anything"
             onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
             disabled={isLoading}
             className="flex-1"
